@@ -66,10 +66,9 @@
     });
   in
     linkFarm "comfyui-models" (toNamePath (mergeModelSets [models dependencies.models]));
-
   config-data = {
     comfyui = let
-      modelsDir = "${modelsDrv}";
+      modelsDir = "${basePath}/models";
     in {
       base_path = basePath;
       checkpoints = "${modelsDir}/checkpoints";
