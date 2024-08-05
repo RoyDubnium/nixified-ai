@@ -75,6 +75,7 @@ with builtins; let
       inpaint = "${modelsDir}/inpaint";
       ipadapter = "${modelsDir}/ipadapter";
       loras = "${modelsDir}/loras";
+      unet = "${modelsDir}/unet";
       upscale_models = "${modelsDir}/upscale_models";
       vae = "${modelsDir}/vae";
       vae_approx = "${modelsDir}/vae_approx";
