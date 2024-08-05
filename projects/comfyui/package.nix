@@ -117,13 +117,13 @@ with builtins; let
 in
   stdenv.mkDerivation {
     pname = "comfyui";
-    version = "unstable-2024-06-12";
+    version = "unstable-2024-08-05";
 
     src = fetchFromGitHub {
       owner = "comfyanonymous";
       repo = "ComfyUI";
-      rev = "605e64f6d3da44235498bf9103d7aab1c95ef211";
-      hash = "sha256-JU3SC1mnhsD+eD5eAX0RsEu0zoSxq8DfgR2RxX5ttb0=";
+      rev = "e545a636baae052000abb1250a69e1cac32b2bae";
+      hash = "sha256-uFfIYdUvAjGgLAfs/1e8OZR8kzNfLwaWLt5jozu1mIM=";
     };
 
     installPhase = ''
