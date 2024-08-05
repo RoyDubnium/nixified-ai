@@ -145,8 +145,6 @@ in
       cp ${modelPathsFile} $out/extra_model_paths.yaml
       echo "Setting up custom nodes"
       ln -snf ${customNodesDrv} $out/custom_nodes
-      echo "Symlinking models into installation dir for scripts that are unaware of extra_model_paths.yaml"
-      ln -snf ${modelsDrv} $out/models
       echo "Copying executable script"
       cp ${executable}/bin/comfyui $out/bin/comfyui
       substituteInPlace $out/bin/comfyui --replace-warn "\$out" "$out"
