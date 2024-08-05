@@ -60,41 +60,10 @@ with builtins; let
     expectType (t.attrsOf t.package)
     "customNodes" (linkFarm "comfyui-custom-nodes" customNodes);
   # create a derivation for our models
-  modelsDrv = let
-    mkComfyUIModel = name: {
-      src,
-      installPath,
-      type ? null,
-      base ? null,
-    }:
-      stdenv.mkDerivation {
-        inherit src;
-        name = src.name;
-        phases = ["buildPhase"];
-        buildPhase = ''
-          dir=${builtins.dirOf (expectType t.singleLineStr "'installPath' attribute in argument to mkComfyUIModel" installPath)}
-          mkdir -p $out/$dir
-          ln -s $src $out/${installPath}
-        '';
-        meta = {
-          model-type = type;
-          base-model = base;
-        };
-      };
-  in
-    # WARN: this *replaces* existing paths when symlinking
-    symlinkJoin {
-      name = "comfyui-models";
-      paths =
-        lib.mapAttrsToList
-        (name: m: mkComfyUIModel name (expectModel name m))
-        (models // dependencies.models);
-      postBuild = "echo links added";
-    };
 
   config-data = {
     comfyui = let
-      modelsDir = "${modelsDrv}";
+      modelsDir = "${basePath}/models";
     in {
       base_path = basePath;
       checkpoints = "${modelsDir}/checkpoints";
