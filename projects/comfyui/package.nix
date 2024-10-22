@@ -118,7 +118,6 @@ with builtins; let
 in
   stdenv.mkDerivation {
     pname = "comfyui";
-    version = "unstable-2024-08-05";
     version = "v0.2.4";
 
     src = fetchFromGitHub {
